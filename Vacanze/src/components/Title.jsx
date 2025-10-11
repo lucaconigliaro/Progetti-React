@@ -1,9 +1,20 @@
-import React from 'react'
+import React from "react";
 
-function Title() {
+const titleStyle = {
+  width: "fith-content",
+  fontVariant: "small-caps",
+  position: "relative",
+  display: "grid",
+  placeItem: "center",
+};
+
+function Title({ text }) {
   return (
-    <div>Title</div>
-  )
+    <div style={titleStyle}>
+      <h4>{text || "Titolo"}</h4>
+      <div className="underline"></div>
+    </div>
+  );
 }
 
-export default Title
+export default Title;
