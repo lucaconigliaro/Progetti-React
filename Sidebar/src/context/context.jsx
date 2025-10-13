@@ -1,8 +1,32 @@
+import React, { useState } from "react";
 
-function context() {
+const AppContext = React.createContext();
+
+const AppProvider = ({ children }) => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openSidebar = () => setIsSidebarOpen(true);
+
+  const closeSidebar = () => setIsSidebarOpen(false);
+
+  const openModal = () => setIsModalOpen(true);
+
+  const closeModal = () => setIsModalOpen(false);
   return (
-    <div>context</div>
-  )
-}
+    <AppContext.Provider
+      value={{
+        isSidebarOpen,
+        openSidebar,
+        closeSidebar,
+        isModalOpen,
+        openModal,
+        closeModal,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
+};
 
-export default context
+export { AppProvider , AppContext};
