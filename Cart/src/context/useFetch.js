@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const useFetch = (url) => {
+export default function useFetch(url) {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
   const [isError, setIsError] = useState(false);
+
   useEffect(() => {
     (async () => {
       setIsLoading(true);
@@ -18,12 +19,9 @@ const useFetch = (url) => {
         setIsError(true);
         setIsLoading(false);
         console.log(err);
-        
       }
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return { isLoading, data, isError };
-};
-
-export default useFetch;
+}
