@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import  { createContext, useState } from "react";
 
-const AppContext = React.createContext();
+const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
