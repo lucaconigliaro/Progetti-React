@@ -13,7 +13,7 @@ const useFetch = (query, type = false) => {
   useEffect(() => {
     (async (query) => {
       setIsError(false);
-      setIsLoading(false);
+      setIsLoading(true);
       try {
         const response = await axios.get(`${url}${query}`);
         setData(response.data);

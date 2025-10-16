@@ -1,7 +1,10 @@
 import { Hero } from "../components";
 import backImage from "../assets/image/Contact-hero.png";
+import useTitle from "../hooks/useTitle";
 
 export default function ContactScreen() {
+  useTitle("CONTATTACI");
+
   return (
     <>
       <Hero img={backImage} disableOverlay>

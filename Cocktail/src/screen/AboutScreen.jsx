@@ -2,8 +2,11 @@ import { Hero, Card } from "../components";
 import { valueCards, teamCards } from "../utils/info.jsx";
 import image from "../assets/image/about-hero.jpg";
 import teamImg from "../assets/image/team-img.jpg";
+import useTitle from "../hooks/useTitle";
 
 export default function AboutScreen() {
+  useTitle("CHI SIAMO");
+
   return (
     <>
       <Hero img={image}>
@@ -43,9 +46,11 @@ export default function AboutScreen() {
         <div className="about team-content container">
           <h3 className="brand-secondary-color">Il NOSTRO TEAM</h3>
         </div>
-        {teamCards.map((card) => {
-          return <Card key={card.title} {...card} className={"value-card"} />;
-        })}
+        <div className="card-section">
+          {teamCards.map((card) => {
+            return <Card key={card.title} {...card} className={"value-card"} />;
+          })}
+        </div>
       </section>
     </>
   );

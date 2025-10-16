@@ -1,8 +1,14 @@
-import Coktail from "./Cocktail";
+import Cocktail from "./Cocktail";
 import styled from "styled-components";
 
 export default function Cocktails({ data }) {
-  return <Wrapper>Cockail List</Wrapper>;
+  return (
+    <Wrapper>
+      {data.map((cocktail) => {
+        return <Cocktail key={cocktail.idDrink} {...cocktail} />;
+      })}
+    </Wrapper>
+  );
 }
 
 const Wrapper = styled.section`

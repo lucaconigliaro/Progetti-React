@@ -2,8 +2,11 @@ import styled from "styled-components";
 import Lottie from "lottie-react";
 import animationData from "../assets/animation/not-found.json";
 import { Link } from "react-router-dom";
+import useTitle from "../hooks/useTitle";
 
 export default function ErrorScreen() {
+  useTitle("ERRORE");
+
   return (
     <Wrapper>
       <h3>Pagina non trovata</h3>

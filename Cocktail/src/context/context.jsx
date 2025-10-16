@@ -5,6 +5,7 @@ const AppContext = createContext();
 function AppProvider({ children }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [query, setQuery] = useState("spritz");
+  const [scrollPosition, setScrollPosition] = useState(0);
   const { isLoading, data, isError, count } = useFetch(`s=${query}`);
 
   const openSidebar = () => {
@@ -18,6 +19,15 @@ function AppProvider({ children }) {
   const searchCocktail = (input) => {
     setQuery(input);
   };
+
+  const getScrollPosition = (value) => {
+    setScrollPosition(value);
+  };
+
+  const deleteScrollPosition = () => {
+    setScrollPosition(0);
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -29,7 +39,10 @@ function AppProvider({ children }) {
         data,
         isError,
         count,
-        searchCocktail
+        searchCocktail,
+        getScrollPosition,
+        deleteScrollPosition,
+        scrollPosition,
       }}
     >
       {children}

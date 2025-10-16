@@ -5,16 +5,32 @@ import Lottie from "lottie-react";
 import animationData from "../assets/animation/drink-animation.json";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../context/useGlobalContext";
+import useTitle from "../hooks/useTitle";
 
 export default function HomeScreen() {
-  const { query, isLoading, data, isError, count, searchCocktail } =
-    useGlobalContext();
-  const [input, setInput] = useState(query);
+  useTitle("HOME");
 
+  const {
+    query,
+    isLoading,
+    data,
+    isError,
+    count,
+    searchCocktail,
+    deleteScrollPosition,
+    scrollPosition,
+  } = useGlobalContext();
+  const [input, setInput] = useState(query);
   const handleSubmit = (e) => {
     e.preventDefault();
     searchCocktail(input);
   };
+
+  useEffect(() => {
+    window.scrollTo(0, scrollPosition);
+    deleteScrollPosition();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
